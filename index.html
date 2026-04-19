@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LEEH4CK - Font Copier</title>
+  <style>
+    /* Aquí declaras tu fuente .otf */
+    @font-face {
+      font-family: 'DanhubFont';           /* Nombre interno que le das (puedes cambiarlo) */
+      src: url('tu-fuente.otf') format('opentype');   /* ← Cambia 'tu-fuente.otf' por el nombre real */
+      font-weight: bold;
+      font-style: normal;
+      font-display: swap;                  /* Para que no se vea texto feo mientras carga */
+    }
+
+    body {
+      background: #0f0f0f;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      padding: 30px 20px;
+      text-align: center;
+    }
+
+    h1 {
+      font-family: 'DanhubFont', sans-serif;
+      font-size: 3.5rem;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      font-size: 1.2rem;
+      color: #aaa;
+      margin-bottom: 40px;
+    }
+
+    .card {
+      background: #1a1a1a;
+      border-radius: 12px;
+      padding: 25px;
+      margin: 20px auto;
+      max-width: 650px;
+      box-shadow: 0 5px 20px rgba(0, 255, 150, 0.1);
+    }
+
+    .sample-text {
+      font-family: 'DanhubFont', sans-serif;
+      font-size: 2.4rem;
+      background: #222;
+      padding: 20px;
+      border-radius: 10px;
+      margin: 15px 0;
+      word-break: break-all;
+      border: 1px solid #333;
+    }
+
+    button {
+      background: #00ff9d;
+      color: #000;
+      border: none;
+      padding: 14px 30px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    button:hover {
+      background: #00cc7a;
+      transform: scale(1.05);
+    }
+
+    .copied {
+      color: #00ff9d;
+      margin-left: 10px;
+      font-size: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>LEEH4CK</h1>
+  <p class="subtitle">Tu página para copiar textos con la fuente real (.otf)</p>
+
+  <div class="card">
+    <div class="sample-text">LEEH4CK</div>
+    <button onclick="copyText(this)">Copiar texto</button>
+  </div>
+
+  <div class="card">
+    <div class="sample-text">LEEH4CK | Exploit Community</div>
+    <button onclick="copyText(this)">Copiar texto</button>
+  </div>
+
+  <div class="card">
+    <div class="sample-text">LEEH4CK 🔥 By Esteban</div>
+    <button onclick="copyText(this)">Copiar texto</button>
+  </div>
+
+  <script>
+    function copyText(button) {
+      const textToCopy = button.previousElementSibling.innerText;
+      
+      navigator.clipboard.writeText(textToCopy).then(() => {
+        const original = button.textContent;
+        button.textContent = '✓ Copiado!';
+        button.style.background = '#00cc7a';
+        
+        setTimeout(() => {
+          button.textContent = original;
+          button.style.background = '#00ff9d';
+        }, 2000);
+      });
+    }
+  </script>
+</body>
+</html>
